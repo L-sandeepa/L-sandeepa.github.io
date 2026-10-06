@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Articles — SyntaxNest</title>
+  <meta name="description" content="Search technical tutorials, AI architecture guides, and software engineering articles across all categories on SyntaxNest.">
+  <link rel="canonical" href="https://l-sandeepa.github.io/search.html">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://l-sandeepa.github.io/search.html">
+  <meta property="og:title" content="Search Articles — SyntaxNest">
+  <meta property="og:description" content="Search technical tutorials, AI architecture guides, and software engineering articles on SyntaxNest.">
+  <meta property="og:image" content="https://l-sandeepa.github.io/assets/images/favicon.svg">
+  <meta property="og:site_name" content="SyntaxNest">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="SyntaxNest Homepage">
+        <svg class="brand-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#0284c7" />
+          <path d="M22 18L14 32L22 46" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M42 18L50 32L42 46" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="32" cy="32" r="5" fill="#ffffff" />
+          <path d="M37 22L27 42" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+        </svg>
+        <span>Syntax<span class="brand-accent">Nest</span></span>
+      </a>
+
+      <nav id="site-navigation" class="site-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="categories/ai.html" class="nav-link">AI</a></li>
+          <li><a href="categories/python.html" class="nav-link">Python</a></li>
+          <li><a href="categories/javascript.html" class="nav-link">JavaScript</a></li>
+          <li><a href="categories/typescript.html" class="nav-link">TypeScript</a></li>
+          <li><a href="categories/software-engineering.html" class="nav-link">Software Engineering</a></li>
+          <li><a href="categories/developer-tools.html" class="nav-link">Developer Tools</a></li>
+          <li><a href="categories/cloud-devops.html" class="nav-link">Cloud &amp; DevOps</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="search.html" class="search-toggle-btn" aria-label="Search SyntaxNest">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>Search</span>
+          <kbd>/</kbd>
+        </a>
+
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open mobile navigation menu" aria-expanded="false" aria-controls="site-navigation">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content" class="site-main">
+    <div class="container">
+      
+      <div class="page-hero">
+        <div class="eyebrow">Instant Search</div>
+        <h1 class="page-title">Search Articles</h1>
+        <p class="page-lead">
+          Find tutorials, guides, and architectural breakdowns across our entire library in real time.
+        </p>
+      </div>
+
+      <!-- Search Input Box -->
+      <div class="search-box-wrapper">
+        <div class="search-form" role="search">
+          <span class="search-icon-inside" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+          <input
+            type="search"
+            id="search-input"
+            class="search-input"
+            placeholder="Search by topic, keyword, or concept (e.g., RAG, API, Python, LLM)..."
+            aria-label="Search articles"
+            autocomplete="off"
+            spellcheck="false"
+          >
+        </div>
+
+        <div class="popular-tags">
+          <span style="font-size: 0.85rem; color: var(--text-dim);">Suggested:</span>
+          <button type="button" class="tag-btn" data-tag="RAG">RAG</button>
+          <button type="button" class="tag-btn" data-tag="LLM">LLM</button>
+          <button type="button" class="tag-btn" data-tag="API">API</button>
+          <button type="button" class="tag-btn" data-tag="Python">Python</button>
+          <button type="button" class="tag-btn" data-tag="Git">Git</button>
+          <button type="button" class="tag-btn" data-tag="AI Agents">AI Agents</button>
+        </div>
+      </div>
+
+      <!-- Results Meta Bar -->
+      <div class="search-meta-bar">
+        <span id="search-results-count" aria-live="polite">Showing all articles</span>
+      </div>
+
+      <!-- Results Grid Container -->
+      <div id="search-results-container" class="articles-grid">
+        <!-- Rendered dynamically by main.js with safe DOM manipulation -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" aria-label="SyntaxNest Homepage">
+            <svg class="brand-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="64" height="64" rx="14" fill="#0284c7" />
+              <path d="M22 18L14 32L22 46" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M42 18L50 32L42 46" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="32" cy="32" r="5" fill="#ffffff" />
+              <path d="M37 22L27 42" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+            </svg>
+            <span>Syntax<span class="brand-accent">Nest</span></span>
+          </a>
+          <p>Learn AI. Build Software. Understand Technology. Educational technology guides and engineering tutorials for developers worldwide.</p>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-col-title">Explore</h3>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="articles.html" class="footer-link">Articles</a></li>
+            <li><a href="about.html" class="footer-link">About</a></li>
+            <li><a href="contact.html" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-col-title">Topics</h3>
+          <ul class="footer-links">
+            <li><a href="categories/ai.html" class="footer-link">AI</a></li>
+            <li><a href="categories/python.html" class="footer-link">Python</a></li>
+            <li><a href="categories/javascript.html" class="footer-link">JavaScript</a></li>
+            <li><a href="categories/typescript.html" class="footer-link">TypeScript</a></li>
+            <li><a href="categories/software-engineering.html" class="footer-link">Software Engineering</a></li>
+            <li><a href="categories/developer-tools.html" class="footer-link">Developer Tools</a></li>
+            <li><a href="categories/cloud-devops.html" class="footer-link">Cloud &amp; DevOps</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-col-title">Legal</h3>
+          <ul class="footer-links">
+            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+            <li><a href="disclaimer.html" class="footer-link">Disclaimer</a></li>
+            <li><a href="sitemap.xml" class="footer-link">Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year">2026</span> SyntaxNest. All rights reserved.</p>
+        <p>A static educational technology resource hosted on GitHub Pages.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

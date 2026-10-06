@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git vs GitHub: What's the Difference? — SyntaxNest</title>
+  <meta name="description" content="Git vs GitHub explained clearly: learn the difference between local version control and cloud collaboration, key CLI commands, branches, and pull requests.">
+  <link rel="canonical" href="https://l-sandeepa.github.io/articles/git-vs-github.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://l-sandeepa.github.io/articles/git-vs-github.html">
+  <meta property="og:title" content="Git vs GitHub: What's the Difference?">
+  <meta property="og:description" content="Clarify the distinction between Git version control and GitHub cloud hosting, with essential terminal commands.">
+  <meta property="og:image" content="https://l-sandeepa.github.io/assets/images/favicon.svg">
+  <meta property="og:site_name" content="SyntaxNest">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Git vs GitHub: What's the Difference?">
+  <meta name="twitter:description" content="Clarify the distinction between Git version control and GitHub cloud hosting, with essential terminal commands.">
+  <meta name="twitter:image" content="https://l-sandeepa.github.io/assets/images/favicon.svg">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Git vs GitHub: What's the Difference?",
+        "description": "Git vs GitHub explained clearly: learn the difference between local version control and cloud collaboration, key CLI commands, branches, and pull requests.",
+        "author": {
+          "@type": "Organization",
+          "name": "SyntaxNest Editorial Team"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "SyntaxNest",
+          "url": "https://l-sandeepa.github.io/"
+        },
+        "datePublished": "2026-10-03",
+        "dateModified": "2026-10-05",
+        "mainEntityOfPage": "https://l-sandeepa.github.io/articles/git-vs-github.html"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://l-sandeepa.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Articles",
+            "item": "https://l-sandeepa.github.io/articles.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Developer Tools",
+            "item": "https://l-sandeepa.github.io/categories/developer-tools.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Git vs GitHub",
+            "item": "https://l-sandeepa.github.io/articles/git-vs-github.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="../index.html" class="brand-logo" aria-label="SyntaxNest Homepage">
+        <svg class="brand-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#0284c7" />
+          <path d="M22 18L14 32L22 46" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M42 18L50 32L42 46" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="32" cy="32" r="5" fill="#ffffff" />
+          <path d="M37 22L27 42" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+        </svg>
+        <span>Syntax<span class="brand-accent">Nest</span></span>
+      </a>
+
+      <nav id="site-navigation" class="site-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="../categories/ai.html" class="nav-link">AI</a></li>
+          <li><a href="../categories/python.html" class="nav-link">Python</a></li>
+          <li><a href="../categories/javascript.html" class="nav-link">JavaScript</a></li>
+          <li><a href="../categories/typescript.html" class="nav-link">TypeScript</a></li>
+          <li><a href="../categories/software-engineering.html" class="nav-link">Software Engineering</a></li>
+          <li><a href="../categories/developer-tools.html" class="nav-link">Developer Tools</a></li>
+          <li><a href="../categories/cloud-devops.html" class="nav-link">Cloud &amp; DevOps</a></li>
+          <li><a href="../about.html" class="nav-link">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="../search.html" class="search-toggle-btn" aria-label="Search SyntaxNest">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>Search</span>
+          <kbd>/</kbd>
+        </a>
+
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open mobile navigation menu" aria-expanded="false" aria-controls="site-navigation">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content" class="site-main">
+    <div class="container">
+      
+      <!-- Article Hero Header -->
+      <header class="article-hero">
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+          <ol class="breadcrumb-list">
+            <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+            <li class="breadcrumb-separator" aria-hidden="true">/</li>
+            <li class="breadcrumb-item"><a href="../articles.html">Articles</a></li>
+            <li class="breadcrumb-separator" aria-hidden="true">/</li>
+            <li class="breadcrumb-item"><a href="../categories/developer-tools.html">Developer Tools</a></li>
+            <li class="breadcrumb-separator" aria-hidden="true">/</li>
+            <li class="breadcrumb-item" aria-current="page">Git vs GitHub</li>
+          </ol>
+        </nav>
+
+        <a href="../categories/developer-tools.html" class="badge badge-developer-tools" style="margin-bottom: 14px;">Developer Tools</a>
+        <h1 class="article-title-main">Git vs GitHub: What's the Difference?</h1>
+        <p class="article-lead">
+          One is a local command-line tool invented by Linus Torvalds; the other is a massive cloud collaboration platform owned by Microsoft. Here is how they work together.
+        </p>
+
+        <div class="article-byline">
+          <div class="byline-item">By <strong>SyntaxNest Editorial Team</strong></div>
+          <div class="byline-item">Published: <strong>October 3, 2026</strong></div>
+          <div class="byline-item">Updated: <strong>October 5, 2026</strong></div>
+          <div class="byline-item">Reading Time: <strong>6 min read</strong></div>
+        </div>
+      </header>
+
+      <!-- Article Layout -->
+      <div class="article-layout">
+        
+        <article class="article-content">
+          
+          <section id="introduction">
+            <h2>Introduction</h2>
+            <p>
+              When learning to program, almost everyone encounters Git and GitHub simultaneously. Because the names are so similar and they are frequently used in the same tutorials, beginners often assume they are the same thing—or that you cannot use one without the other.
+            </p>
+            <p>
+              In reality, they are two completely distinct technologies created for complementary purposes. Understanding the line between them is an essential rite of passage for every modern developer.
+            </p>
+
+            <div class="callout callout-info">
+              <div class="callout-title">The One-Sentence Difference</div>
+              <p>
+                <strong>Git</strong> is the local tool running on your laptop that tracks the history of your files; <strong>GitHub</strong> is a cloud website where you upload that history to collaborate with other humans and deploy code.
+              </p>
+            </div>
+          </section>
+
+          <section id="what-is-git">
+            <h2>What Is Git?</h2>
+            <p>
+              <strong>Git</strong> is a free, open-source <strong>Distributed Version Control System (VCS)</strong> created in 2005 by Linus Torvalds (the creator of the Linux operating system).
+            </p>
+            <p>
+              Before Git, developers backed up their work by saving files with messy suffixes:
+            </p>
+            <div class="code-wrapper">
+              <div class="code-header">
+                <span>The Bad Old Way</span>
+                <span>File List</span>
+              </div>
+              <pre><code>script.js
+script_final.js
+script_final_v2.js
+script_final_ACTUALLY_WORKING.js</code></pre>
+            </div>
+            <p>
+              Git replaces this chaos by quietly recording historical snapshots inside an invisible <code>.git</code> folder in your project directory. It works entirely offline: you don't even need an internet connection to track changes, review diffs, or roll back broken code.
+            </p>
+          </section>
+
+          <section id="what-is-github">
+            <h2>What Is GitHub?</h2>
+            <p>
+              <strong>GitHub</strong> is a cloud-based web platform and hosting service for Git repositories.
+            </p>
+            <p>
+              If Git is your camera, GitHub is Instagram. You can take photos on your camera all day long without anyone ever seeing them. But when you want to share them with friends, back them up in the cloud, or receive feedback, you upload them to a platform.
+            </p>
+            <p>
+              GitHub adds powerful developer features on top of Git:
+            </p>
+            <ul>
+              <li><strong>Cloud Backup:</strong> Never lose code if your laptop is damaged.</li>
+              <li><strong>Pull Requests (PRs):</strong> A graphical interface where colleagues review each other's code before merging it into production.</li>
+              <li><strong>Issues &amp; Project Boards:</strong> Tracking bugs, feature requests, and sprint roadmaps.</li>
+              <li><strong>GitHub Actions:</strong> Automated CI/CD pipelines that test and deploy code on every push (such as automatically building and publishing this SyntaxNest website via GitHub Pages!).</li>
+            </ul>
+          </section>
+
+          <section id="comparison-table">
+            <h2>Side-by-Side Comparison</h2>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Feature</th>
+                    <th>Git</th>
+                    <th>GitHub</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>What is it?</strong></td>
+                    <td>Command-line software installed on your machine</td>
+                    <td>Web platform and cloud hosting service</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Internet Needed?</strong></td>
+                    <td>No (100% functional offline)</td>
+                    <td>Yes (to sync, view web UI, and share)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>User Interface</strong></td>
+                    <td>Terminal CLI (or desktop GUI clients)</td>
+                    <td>Web browser interface + REST API</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Competitors</strong></td>
+                    <td>Mercurial, SVN</td>
+                    <td>GitLab, Bitbucket, Sourcehut</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Owner</strong></td>
+                    <td>Open-source community</td>
+                    <td>Microsoft Corporation</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="core-git-concepts">
+            <h2>Core Concepts Every Developer Must Know</h2>
+            
+            <h3>1. Repository (Repo)</h3>
+            <p>A project directory tracked by Git. It contains all project files and the full historical record of every change ever made.</p>
+
+            <h3>2. Commit</h3>
+            <p>A permanent checkpoint in your project's timeline. Each commit contains an author name, timestamp, a unique cryptographic hash (e.g., <code>e4a19b8</code>), and a descriptive message explaining what changed.</p>
+
+            <h3>3. Branch</h3>
+            <p>A parallel version of your repository. Branches allow you to build an experimental feature or fix a bug in isolation without breaking the working <code>main</code> branch.</p>
+
+            <h3>4. Merge</h3>
+            <p>Combining the historical changes from one branch into another once testing is complete.</p>
+
+            <h3>5. Push &amp; Pull</h3>
+            <ul>
+              <li><code>git push</code>: Uploads your local commits up to GitHub.</li>
+              <li><code>git pull</code>: Downloads commits made by teammates on GitHub down to your local computer.</li>
+            </ul>
+
+            <h3>6. Pull Request (PR)</h3>
+            <p>A formal request on GitHub asking the team: <em>"I finished this feature on my branch; please review my code and merge it into main."</em></p>
+          </section>
+
+          <section id="essential-commands">
+            <h2>The Essential Git Command Flow</h2>
+            <p>
+              Here is the daily terminal workflow used by professional software engineers worldwide:
+            </p>
+
+            <div class="code-wrapper">
+              <div class="code-header">
+                <span>Daily Terminal Workflow</span>
+                <span>Bash / CLI</span>
+              </div>
+              <pre><code># 1. Initialize a new Git repository in current folder
+git init
+
+# 2. Stage modified files for a commit
+git add .
+
+# 3. Create a permanent snapshot with a descriptive message
+git commit -m "feat: add user authentication form"
+
+# 4. Create and switch to a new feature branch
+git checkout -b feature/dark-mode
+
+# 5. Link local repo to remote GitHub repository
+git remote add origin https://github.com/L-sandeepa/SyntaxNest.git
+
+# 6. Push branch up to GitHub
+git push -u origin feature/dark-mode
+
+# 7. Download latest changes from teammates
+git pull origin main</code></pre>
+            </div>
+          </section>
+
+          <section id="why-this-matters-for-teams">
+            <h2>Why Version Control Is Non-Negotiable</h2>
+            <p>
+              Without Git, teamwork on a single codebase is impossible: two engineers editing the same file would constantly overwrite each other's work.
+            </p>
+            <p>
+              With Git, multiple engineers can work on different branches simultaneously. When changes conflict, Git highlights the exact lines that disagree, allowing developers to safely resolve them together before shipping to production.
+            </p>
+          </section>
+
+          <section id="conclusion">
+            <h2>Conclusion</h2>
+            <p>
+              Git is the engine that tracks your code history; GitHub is the garage where you share, inspect, and deploy that code to the world. By mastering a few core terminal commands and understanding the pull request workflow, you unlock the ability to collaborate with any engineering team on the planet.
+            </p>
+          </section>
+
+          <!-- Article Bottom Navigation -->
+          <nav class="article-nav-section" aria-label="Article Pagination">
+            <a href="python-for-ai-developers.html" class="article-nav-card">
+              <span class="nav-direction">← Previous Article</span>
+              <span class="nav-article-title">Python for AI Developers: The Primer</span>
+            </a>
+            <a href="what-are-ai-agents.html" class="article-nav-card next">
+              <span class="nav-direction">Next Article →</span>
+              <span class="nav-article-title">What Are AI Agents? An Introduction</span>
+            </a>
+          </nav>
+
+          <!-- Related Articles -->
+          <section class="related-articles">
+            <h2 class="related-title">Related Articles</h2>
+            <div class="articles-grid">
+              <article class="article-card">
+                <div class="article-card-header">
+                  <span class="badge badge-software-engineering">Software Engineering</span>
+                  <span class="reading-time">6 min read</span>
+                </div>
+                <h3 class="article-card-title">
+                  <a href="what-is-an-api.html">What Is an API? A Beginner-Friendly Guide for Developers</a>
+                </h3>
+                <p class="article-card-desc">
+                  Understand how software applications communicate with remote services over HTTP.
+                </p>
+                <div class="article-card-footer">
+                  <span class="article-card-meta">October 2026</span>
+                  <a href="what-is-an-api.html" class="read-link">Read article →</a>
+                </div>
+              </article>
+
+              <article class="article-card">
+                <div class="article-card-header">
+                  <span class="badge badge-python">Python</span>
+                  <span class="reading-time">9 min read</span>
+                </div>
+                <h3 class="article-card-title">
+                  <a href="python-for-ai-developers.html">Python for AI Developers: What You Need to Know First</a>
+                </h3>
+                <p class="article-card-desc">
+                  Set up clean, version-controlled virtual environments for your Python projects.
+                </p>
+                <div class="article-card-footer">
+                  <span class="article-card-meta">October 2026</span>
+                  <a href="python-for-ai-developers.html" class="read-link">Read article →</a>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Article CTA Box -->
+          <div class="cta-banner" style="margin-top: 50px;">
+            <h2 class="cta-title">Level Up Your Developer Tooling</h2>
+            <p class="cta-desc">Discover more guides on modern developer productivity, version control, and cloud workflows.</p>
+            <a href="../articles.html" class="btn btn-primary">Browse All Articles</a>
+          </div>
+
+        </article>
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar" aria-label="Table of Contents">
+          <div class="toc-title">Table of Contents</div>
+          <ul class="toc-list">
+            <li><a href="#introduction" class="toc-link">Introduction</a></li>
+            <li><a href="#what-is-git" class="toc-link">What Is Git?</a></li>
+            <li><a href="#what-is-github" class="toc-link">What Is GitHub?</a></li>
+            <li><a href="#comparison-table" class="toc-link">Side-by-Side Comparison</a></li>
+            <li><a href="#core-git-concepts" class="toc-link">Core Concepts</a></li>
+            <li><a href="#essential-commands" class="toc-link">Essential Commands</a></li>
+            <li><a href="#why-this-matters-for-teams" class="toc-link">Why Teams Need Git</a></li>
+            <li><a href="#conclusion" class="toc-link">Conclusion</a></li>
+          </ul>
+        </aside>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="brand-logo" aria-label="SyntaxNest Homepage">
+            <svg class="brand-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="64" height="64" rx="14" fill="#0284c7" />
+              <path d="M22 18L14 32L22 46" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M42 18L50 32L42 46" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="32" cy="32" r="5" fill="#ffffff" />
+              <path d="M37 22L27 42" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+            </svg>
+            <span>Syntax<span class="brand-accent">Nest</span></span>
+          </a>
+          <p>Learn AI. Build Software. Understand Technology. Educational technology guides and engineering tutorials for developers worldwide.</p>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-col-title">Explore</h3>
+          <ul class="footer-links">
+            <li><a href="../index.html" class="footer-link">Home</a></li>
+            <li><a href="../articles.html" class="footer-link">Articles</a></li>
+            <li><a href="../about.html" class="footer-link">About</a></li>
+            <li><a href="../contact.html" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-col-title">Topics</h3>
+          <ul class="footer-links">
+            <li><a href="../categories/ai.html" class="footer-link">AI</a></li>
+            <li><a href="../categories/python.html" class="footer-link">Python</a></li>
+            <li><a href="../categories/javascript.html" class="footer-link">JavaScript</a></li>
+            <li><a href="../categories/typescript.html" class="footer-link">TypeScript</a></li>
+            <li><a href="../categories/software-engineering.html" class="footer-link">Software Engineering</a></li>
+            <li><a href="../categories/developer-tools.html" class="footer-link">Developer Tools</a></li>
+            <li><a href="../categories/cloud-devops.html" class="footer-link">Cloud &amp; DevOps</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-col-title">Legal</h3>
+          <ul class="footer-links">
+            <li><a href="../privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+            <li><a href="../disclaimer.html" class="footer-link">Disclaimer</a></li>
+            <li><a href="../sitemap.xml" class="footer-link">Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year">2026</span> SyntaxNest. All rights reserved.</p>
+        <p>A static educational technology resource hosted on GitHub Pages.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

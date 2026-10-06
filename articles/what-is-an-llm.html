@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Is an LLM? A Beginner-Friendly Guide to Large Language Models — SyntaxNest</title>
+  <meta name="description" content="What is an LLM? Learn how Large Language Models work in simple terms: tokens, parameters, pre-training, context windows, hallucinations, and inference.">
+  <link rel="canonical" href="https://l-sandeepa.github.io/articles/what-is-an-llm.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://l-sandeepa.github.io/articles/what-is-an-llm.html">
+  <meta property="og:title" content="What Is an LLM? A Beginner-Friendly Guide to Large Language Models">
+  <meta property="og:description" content="A comprehensive beginner guide to Large Language Models: tokens, parameters, prompt engineering, and inference mechanics.">
+  <meta property="og:image" content="https://l-sandeepa.github.io/assets/images/favicon.svg">
+  <meta property="og:site_name" content="SyntaxNest">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="What Is an LLM? A Beginner-Friendly Guide to Large Language Models">
+  <meta name="twitter:description" content="A comprehensive beginner guide to Large Language Models: tokens, parameters, prompt engineering, and inference mechanics.">
+  <meta name="twitter:image" content="https://l-sandeepa.github.io/assets/images/favicon.svg">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "What Is an LLM? A Beginner-Friendly Guide to Large Language Models",
+        "description": "What is an LLM? Learn how Large Language Models work in simple terms: tokens, parameters, pre-training, context windows, hallucinations, and inference.",
+        "author": {
+          "@type": "Organization",
+          "name": "SyntaxNest Editorial Team"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "SyntaxNest",
+          "url": "https://l-sandeepa.github.io/"
+        },
+        "datePublished": "2026-10-02",
+        "dateModified": "2026-10-05",
+        "mainEntityOfPage": "https://l-sandeepa.github.io/articles/what-is-an-llm.html"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://l-sandeepa.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Articles",
+            "item": "https://l-sandeepa.github.io/articles.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Artificial Intelligence",
+            "item": "https://l-sandeepa.github.io/categories/ai.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "What Is an LLM?",
+            "item": "https://l-sandeepa.github.io/articles/what-is-an-llm.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="../index.html" class="brand-logo" aria-label="SyntaxNest Homepage">
+        <svg class="brand-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#0284c7" />
+          <path d="M22 18L14 32L22 46" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M42 18L50 32L42 46" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="32" cy="32" r="5" fill="#ffffff" />
+          <path d="M37 22L27 42" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+        </svg>
+        <span>Syntax<span class="brand-accent">Nest</span></span>
+      </a>
+
+      <nav id="site-navigation" class="site-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="../categories/ai.html" class="nav-link">AI</a></li>
+          <li><a href="../categories/python.html" class="nav-link">Python</a></li>
+          <li><a href="../categories/javascript.html" class="nav-link">JavaScript</a></li>
+          <li><a href="../categories/typescript.html" class="nav-link">TypeScript</a></li>
+          <li><a href="../categories/software-engineering.html" class="nav-link">Software Engineering</a></li>
+          <li><a href="../categories/developer-tools.html" class="nav-link">Developer Tools</a></li>
+          <li><a href="../categories/cloud-devops.html" class="nav-link">Cloud &amp; DevOps</a></li>
+          <li><a href="../about.html" class="nav-link">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="../search.html" class="search-toggle-btn" aria-label="Search SyntaxNest">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>Search</span>
+          <kbd>/</kbd>
+        </a>
+
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open mobile navigation menu" aria-expanded="false" aria-controls="site-navigation">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content" class="site-main">
+    <div class="container">
+      
+      <!-- Article Hero Header -->
+      <header class="article-hero">
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+          <ol class="breadcrumb-list">
+            <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+            <li class="breadcrumb-separator" aria-hidden="true">/</li>
+            <li class="breadcrumb-item"><a href="../articles.html">Articles</a></li>
+            <li class="breadcrumb-separator" aria-hidden="true">/</li>
+            <li class="breadcrumb-item"><a href="../categories/ai.html">Artificial Intelligence</a></li>
+            <li class="breadcrumb-separator" aria-hidden="true">/</li>
+            <li class="breadcrumb-item" aria-current="page">What Is an LLM?</li>
+          </ol>
+        </nav>
+
+        <a href="../categories/ai.html" class="badge badge-ai" style="margin-bottom: 14px;">Artificial Intelligence</a>
+        <h1 class="article-title-main">What Is an LLM? A Beginner-Friendly Guide to Large Language Models</h1>
+        <p class="article-lead">
+          From autocomplete on your phone to systems that write code and pass bar exams: discover what Large Language Models actually are, how neural parameters work, and what happens during model inference.
+        </p>
+
+        <div class="article-byline">
+          <div class="byline-item">By <strong>SyntaxNest Editorial Team</strong></div>
+          <div class="byline-item">Published: <strong>October 2, 2026</strong></div>
+          <div class="byline-item">Updated: <strong>October 5, 2026</strong></div>
+          <div class="byline-item">Reading Time: <strong>7 min read</strong></div>
+        </div>
+      </header>
+
+      <!-- Article Layout -->
+      <div class="article-layout">
+        
+        <article class="article-content">
+          
+          <section id="introduction">
+            <h2>Introduction</h2>
+            <p>
+              Over the last few years, terms like "GPT," "transformer," and "LLM" have escaped research labs and entered everyday software engineering conversations. But behind the marketing hype and philosophical debates about artificial minds lies an extraordinary, mathematical engineering breakthrough: <strong>Large Language Models</strong>.
+            </p>
+            <p>
+              At their heart, LLMs do not "think" or "feel" in human terms. Rather, they are high-dimensional pattern-recognition systems trained on hundreds of billions of words to answer one deceptively simple mathematical challenge: <em>Given this sequence of words, what is the most statistically probable next word?</em>
+            </p>
+          </section>
+
+          <section id="what-llm-means">
+            <h2>What Does "LLM" Mean?</h2>
+            <p>
+              The name breaks into three distinct parts:
+            </p>
+            <ul>
+              <li><strong>Large:</strong> Refers both to the massive scale of the dataset (petabytes of web text, books, codebases, and academic papers) and the gigantic size of the model's neural architecture (tens to hundreds of billions of adjustable parameters).</li>
+              <li><strong>Language:</strong> The domain of data the model is designed to process: human languages (English, Spanish, Mandarin), programming languages (Python, JavaScript, Rust), and structured notations (JSON, Markdown, LaTeX).</li>
+              <li><strong>Model:</strong> A trained machine learning program containing billions of numerical mathematical weights saved onto disk that can make predictions based on incoming inputs.</li>
+            </ul>
+          </section>
+
+          <section id="tokens-and-tokenization">
+            <h2>Tokens: How Machines Read Text</h2>
+            <p>
+              Computers cannot understand raw letters or sentences; computers only compute numbers. Before an LLM processes your question, your text undergoes a process called <strong>tokenization</strong>.
+            </p>
+            <p>
+              A <strong>token</strong> is a chunk of characters representing a word or sub-word. In English:
+            </p>
+            <ul>
+              <li>Common words like "the", "cat", or "blue" are usually <strong>1 single token</strong>.</li>
+              <li>Longer, rare, or compound words like "unbelievable" might be split into 3 tokens: <code>un</code>, <code>believ</code>, <code>able</code>.</li>
+              <li>As a general heuristic, <strong>1,000 tokens ≈ 750 English words</strong>.</li>
+            </ul>
+
+            <div class="code-wrapper">
+              <div class="code-header">
+                <span>Tokenization Example</span>
+                <span>Representation</span>
+              </div>
+              <pre><code>Text Input:
+"Learning AI is exciting!"
+
+Token IDs (Numbers the model actually receives):
+[4218, 9552, 318, 12690, 0]</code></pre>
+            </div>
+          </section>
+
+          <section id="parameters-and-neural-weights">
+            <h2>Parameters: The Knobs of the Neural Machine</h2>
+            <p>
+              When people say a model has "70 Billion Parameters," what does that actually mean?
+            </p>
+            <p>
+              Think of parameters as billions of tiny adjustable volume knobs inside a massive audio mixing board. Each knob controls the mathematical connection strength between different artificial neurons in a deep neural network (specifically, the <strong>Transformer architecture</strong>).
+            </p>
+            <p>
+              When the model is first created, all these knobs are initialized randomly—it produces pure gibberish. During training, the system adjusts these billions of knobs by tiny increments millions of times until the network reliably predicts human language patterns.
+            </p>
+          </section>
+
+          <section id="training-process">
+            <h2>How LLMs Are Trained: Pre-training vs Alignment</h2>
+            <p>
+              Building a modern production LLM typically happens in three progressive phases:
+            </p>
+            
+            <div class="arch-diagram-card" aria-label="LLM Training Phases">
+              <div class="arch-header">
+                <span class="arch-title">Model Development Lifecycle</span>
+                <div class="arch-dots" aria-hidden="true"><span class="arch-dot"></span><span class="arch-dot"></span><span class="arch-dot"></span></div>
+              </div>
+              <div class="arch-flow">
+                <div class="flow-step">
+                  <div class="flow-num">1</div>
+                  <div class="flow-content">
+                    <div class="flow-label">Pre-Training (Unsupervised Learning)</div>
+                    <div class="flow-sub">Read trillions of internet tokens; learn world grammar &amp; coding patterns.</div>
+                  </div>
+                </div>
+                <div class="flow-arrow">▼</div>
+                <div class="flow-step active">
+                  <div class="flow-num">2</div>
+                  <div class="flow-content">
+                    <div class="flow-label">Instruction Fine-Tuning (SFT)</div>
+                    <div class="flow-sub">Trained on curated question-answer pairs to act like a helpful assistant.</div>
+                  </div>
+                </div>
+                <div class="flow-arrow">▼</div>
+                <div class="flow-step">
+                  <div class="flow-num">3</div>
+                  <div class="flow-content">
+                    <div class="flow-label">Alignment / RLHF (Human Feedback)</div>
+                    <div class="flow-sub">Reinforcement learning from human preferences to ensure safety &amp; helpfulness.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h3>1. Pre-Training</h3>
+            <p>The model consumes trillions of tokens. It plays a game of fill-in-the-blank on an astronomical scale, predicting the next word across Wikipedia, open source code, and books. This requires thousands of GPUs and millions of dollars.</p>
+
+            <h3>2. Supervised Fine-Tuning (SFT)</h3>
+            <p>A base pre-trained model only completes sentences (if you write "How to boil an egg?", it might just add "...is a common question asked by cooks"). SFT teaches the model to behave as an instruction-following assistant that directly provides the answer.</p>
+
+            <h3>3. Reinforcement Learning from Human Feedback (RLHF)</h3>
+            <p>Human evaluators rate pairs of model responses. The model's weights are calibrated to prefer helpful, harmless, and logically coherent answers.</p>
+          </section>
+
+          <section id="inference-and-prompts">
+            <h2>Inference and Prompt Engineering</h2>
+            <p>
+              <strong>Inference</strong> is the stage when you run a finished model to get an answer. When you type a prompt into an interface, the model executes a forward pass through its neural network, computes probability distributions over its entire vocabulary of tokens, chooses the next token, appends it to your text, and repeats the process until it outputs a stop token.
+            </p>
+            <p>
+              Because inference depends completely on the context provided in your request, <strong>Prompt Engineering</strong>—the practice of structuring inputs with clear instructions, examples, and constraints—has become a vital developer skill.
+            </p>
+          </section>
+
+          <section id="context-windows">
+            <h2>The Context Window</h2>
+            <p>
+              An LLM does not have continuous long-term memory like humans. Every time you send a new message in a conversation, the application re-sends the previous chat history along with your new question.
+            </p>
+            <p>
+              The maximum quantity of tokens a model can hold in its active working memory at one instant is called its <strong>context window</strong> (e.g., 32,000 tokens, 128,000 tokens, or 1 million tokens). While modern context windows are expanding dramatically, larger contexts consume significantly more memory and compute time.
+            </p>
+          </section>
+
+          <section id="llm-vs-traditional-software">
+            <h2>LLM vs Traditional Software</h2>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Dimension</th>
+                    <th>Traditional Software (Deterministic)</th>
+                    <th>Large Language Model (Probabilistic)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Execution Logic</strong></td>
+                    <td>Explicit <code>if/else</code> and Boolean algebra written by humans</td>
+                    <td>Statistical vector calculations learned through neural training</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Output Predictability</strong></td>
+                    <td>Same input always yields identical, 100% deterministic output</td>
+                    <td>Probabilistic next-token predictions (governed by temperature settings)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Ambiguity Handling</strong></td>
+                    <td>Throws syntax errors or crashes on unstructured inputs</td>
+                    <td>Naturally parses ambiguous, messy natural language and intent</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Debugging Method</strong></td>
+                    <td>Step-through breakpoints, unit tests, and stack traces</td>
+                    <td>Prompt adjustments, evaluation benchmarks, and grounding via <a href="what-is-rag.html">RAG</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="llm-vs-chatbot">
+            <h2>LLM vs Chatbot: An Important Distinction</h2>
+            <p>
+              Many newcomers use "LLM" and "Chatbot" interchangeably, but they are not the same:
+            </p>
+            <ul>
+              <li><strong>The LLM is the Engine:</strong> An LLM is the underlying neural model API that takes tokens in and generates tokens out. It has no user interface, no chat window, and no browser.</li>
+              <li><strong>The Chatbot is the Application:</strong> The chatbot is the full software application built on top of the engine. It includes user authentication, chat history storage in databases, web user interfaces, and safety filters.</li>
+            </ul>
+          </section>
+
+          <section id="hallucinations-and-limitations">
+            <h2>Hallucinations and Real-World Limitations</h2>
+            <p>
+              Despite their capabilities, LLMs have critical failure modes:
+            </p>
+            <div class="callout callout-warning">
+              <div class="callout-title">Understanding Hallucinations</div>
+              <p>
+                Because LLMs are trained to sound fluent and grammatical, they will occasionally invent facts, citations, or code functions that sound plausible but are entirely fabricated. Never assume an LLM's unverified output is true.
+              </p>
+            </div>
+            <ul>
+              <li><strong>No Real-World Grounding:</strong> A model doesn't understand the physical consequences of its statements.</li>
+              <li><strong>Mathematics and Exact Logic:</strong> Pure language models struggle with multi-step arithmetic because they predict text rather than performing symbolic calculations.</li>
+              <li><strong>Knowledge Stagnation:</strong> After pre-training concludes, a model cannot learn new facts without retraining or augmenting it with external tools and <a href="what-is-rag.html">RAG</a>.</li>
+            </ul>
+          </section>
+
+          <section id="conclusion">
+            <h2>Conclusion</h2>
+            <p>
+              Large Language Models represent the most powerful natural language processing tool ever created. By understanding that they operate on tokens, parameters, and statistical inference, developers can demystify AI, avoid common pitfalls like hallucinations, and harness them to build intelligent, reliable software.
+            </p>
+          </section>
+
+          <!-- Article Bottom Navigation -->
+          <nav class="article-nav-section" aria-label="Article Pagination">
+            <a href="what-is-rag.html" class="article-nav-card">
+              <span class="nav-direction">← Previous Article</span>
+              <span class="nav-article-title">What Is RAG? A Beginner-Friendly Guide</span>
+            </a>
+            <a href="what-is-an-api.html" class="article-nav-card next">
+              <span class="nav-direction">Next Article →</span>
+              <span class="nav-article-title">What Is an API? A Guide for Developers</span>
+            </a>
+          </nav>
+
+          <!-- Related Articles -->
+          <section class="related-articles">
+            <h2 class="related-title">Related Articles</h2>
+            <div class="articles-grid">
+              <article class="article-card">
+                <div class="article-card-header">
+                  <span class="badge badge-ai">Artificial Intelligence</span>
+                  <span class="reading-time">8 min read</span>
+                </div>
+                <h3 class="article-card-title">
+                  <a href="what-is-rag.html">What Is RAG? A Beginner-Friendly Guide to Retrieval-Augmented Generation</a>
+                </h3>
+                <p class="article-card-desc">
+                  Learn how to connect LLMs to private databases to stop hallucinations and answer questions on custom data.
+                </p>
+                <div class="article-card-footer">
+                  <span class="article-card-meta">October 2026</span>
+                  <a href="what-is-rag.html" class="read-link">Read article →</a>
+                </div>
+              </article>
+
+              <article class="article-card">
+                <div class="article-card-header">
+                  <span class="badge badge-ai">Artificial Intelligence</span>
+                  <span class="reading-time">8 min read</span>
+                </div>
+                <h3 class="article-card-title">
+                  <a href="what-are-ai-agents.html">What Are AI Agents? A Beginner-Friendly Introduction</a>
+                </h3>
+                <p class="article-card-desc">
+                  Discover how LLMs can be transformed from passive chatbots into proactive autonomous problem solvers.
+                </p>
+                <div class="article-card-footer">
+                  <span class="article-card-meta">October 2026</span>
+                  <a href="what-are-ai-agents.html" class="read-link">Read article →</a>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Article CTA Box -->
+          <div class="cta-banner" style="margin-top: 50px;">
+            <h2 class="cta-title">Deepen Your AI Knowledge</h2>
+            <p class="cta-desc">Master the software engineering patterns that turn models into production systems.</p>
+            <a href="../articles.html" class="btn btn-primary">Browse All Articles</a>
+          </div>
+
+        </article>
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar" aria-label="Table of Contents">
+          <div class="toc-title">Table of Contents</div>
+          <ul class="toc-list">
+            <li><a href="#introduction" class="toc-link">Introduction</a></li>
+            <li><a href="#what-llm-means" class="toc-link">What Does LLM Mean?</a></li>
+            <li><a href="#tokens-and-tokenization" class="toc-link">Tokens &amp; Tokenization</a></li>
+            <li><a href="#parameters-and-neural-weights" class="toc-link">Parameters &amp; Weights</a></li>
+            <li><a href="#training-process" class="toc-link">How LLMs Are Trained</a></li>
+            <li><a href="#inference-and-prompts" class="toc-link">Inference &amp; Prompts</a></li>
+            <li><a href="#context-windows" class="toc-link">Context Windows</a></li>
+            <li><a href="#llm-vs-traditional-software" class="toc-link">LLM vs Traditional Code</a></li>
+            <li><a href="#llm-vs-chatbot" class="toc-link">LLM vs Chatbot</a></li>
+            <li><a href="#hallucinations-and-limitations" class="toc-link">Hallucinations &amp; Limits</a></li>
+            <li><a href="#conclusion" class="toc-link">Conclusion</a></li>
+          </ul>
+        </aside>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="brand-logo" aria-label="SyntaxNest Homepage">
+            <svg class="brand-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="64" height="64" rx="14" fill="#0284c7" />
+              <path d="M22 18L14 32L22 46" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M42 18L50 32L42 46" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="32" cy="32" r="5" fill="#ffffff" />
+              <path d="M37 22L27 42" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+            </svg>
+            <span>Syntax<span class="brand-accent">Nest</span></span>
+          </a>
+          <p>Learn AI. Build Software. Understand Technology. Educational technology guides and engineering tutorials for developers worldwide.</p>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-col-title">Explore</h3>
+          <ul class="footer-links">
+            <li><a href="../index.html" class="footer-link">Home</a></li>
+            <li><a href="../articles.html" class="footer-link">Articles</a></li>
+            <li><a href="../about.html" class="footer-link">About</a></li>
+            <li><a href="../contact.html" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-col-title">Topics</h3>
+          <ul class="footer-links">
+            <li><a href="../categories/ai.html" class="footer-link">AI</a></li>
+            <li><a href="../categories/python.html" class="footer-link">Python</a></li>
+            <li><a href="../categories/javascript.html" class="footer-link">JavaScript</a></li>
+            <li><a href="../categories/typescript.html" class="footer-link">TypeScript</a></li>
+            <li><a href="../categories/software-engineering.html" class="footer-link">Software Engineering</a></li>
+            <li><a href="../categories/developer-tools.html" class="footer-link">Developer Tools</a></li>
+            <li><a href="../categories/cloud-devops.html" class="footer-link">Cloud &amp; DevOps</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-col-title">Legal</h3>
+          <ul class="footer-links">
+            <li><a href="../privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+            <li><a href="../disclaimer.html" class="footer-link">Disclaimer</a></li>
+            <li><a href="../sitemap.xml" class="footer-link">Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year">2026</span> SyntaxNest. All rights reserved.</p>
+        <p>A static educational technology resource hosted on GitHub Pages.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

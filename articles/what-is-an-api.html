@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Is an API? A Beginner-Friendly Guide for Developers — SyntaxNest</title>
+  <meta name="description" content="What is an API? Learn Application Programming Interfaces from scratch: clients, servers, HTTP methods (GET, POST), JSON, status codes, and authentication.">
+  <link rel="canonical" href="https://l-sandeepa.github.io/articles/what-is-an-api.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://l-sandeepa.github.io/articles/what-is-an-api.html">
+  <meta property="og:title" content="What Is an API? A Beginner-Friendly Guide for Developers">
+  <meta property="og:description" content="Master API fundamentals: clients, servers, HTTP request/response lifecycles, REST verbs, JSON formatting, and status codes.">
+  <meta property="og:image" content="https://l-sandeepa.github.io/assets/images/favicon.svg">
+  <meta property="og:site_name" content="SyntaxNest">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="What Is an API? A Beginner-Friendly Guide for Developers">
+  <meta name="twitter:description" content="Master API fundamentals: clients, servers, HTTP request/response lifecycles, REST verbs, JSON formatting, and status codes.">
+  <meta name="twitter:image" content="https://l-sandeepa.github.io/assets/images/favicon.svg">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "What Is an API? A Beginner-Friendly Guide for Developers",
+        "description": "What is an API? Learn Application Programming Interfaces from scratch: clients, servers, HTTP methods (GET, POST), JSON, status codes, and authentication.",
+        "author": {
+          "@type": "Organization",
+          "name": "SyntaxNest Editorial Team"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "SyntaxNest",
+          "url": "https://l-sandeepa.github.io/"
+        },
+        "datePublished": "2026-10-02",
+        "dateModified": "2026-10-05",
+        "mainEntityOfPage": "https://l-sandeepa.github.io/articles/what-is-an-api.html"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://l-sandeepa.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Articles",
+            "item": "https://l-sandeepa.github.io/articles.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Software Engineering",
+            "item": "https://l-sandeepa.github.io/categories/software-engineering.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "What Is an API?",
+            "item": "https://l-sandeepa.github.io/articles/what-is-an-api.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="../index.html" class="brand-logo" aria-label="SyntaxNest Homepage">
+        <svg class="brand-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#0284c7" />
+          <path d="M22 18L14 32L22 46" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M42 18L50 32L42 46" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="32" cy="32" r="5" fill="#ffffff" />
+          <path d="M37 22L27 42" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+        </svg>
+        <span>Syntax<span class="brand-accent">Nest</span></span>
+      </a>
+
+      <nav id="site-navigation" class="site-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="../categories/ai.html" class="nav-link">AI</a></li>
+          <li><a href="../categories/python.html" class="nav-link">Python</a></li>
+          <li><a href="../categories/javascript.html" class="nav-link">JavaScript</a></li>
+          <li><a href="../categories/typescript.html" class="nav-link">TypeScript</a></li>
+          <li><a href="../categories/software-engineering.html" class="nav-link">Software Engineering</a></li>
+          <li><a href="../categories/developer-tools.html" class="nav-link">Developer Tools</a></li>
+          <li><a href="../categories/cloud-devops.html" class="nav-link">Cloud &amp; DevOps</a></li>
+          <li><a href="../about.html" class="nav-link">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="../search.html" class="search-toggle-btn" aria-label="Search SyntaxNest">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>Search</span>
+          <kbd>/</kbd>
+        </a>
+
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open mobile navigation menu" aria-expanded="false" aria-controls="site-navigation">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content" class="site-main">
+    <div class="container">
+      
+      <!-- Article Hero Header -->
+      <header class="article-hero">
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+          <ol class="breadcrumb-list">
+            <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+            <li class="breadcrumb-separator" aria-hidden="true">/</li>
+            <li class="breadcrumb-item"><a href="../articles.html">Articles</a></li>
+            <li class="breadcrumb-separator" aria-hidden="true">/</li>
+            <li class="breadcrumb-item"><a href="../categories/software-engineering.html">Software Engineering</a></li>
+            <li class="breadcrumb-separator" aria-hidden="true">/</li>
+            <li class="breadcrumb-item" aria-current="page">What Is an API?</li>
+          </ol>
+        </nav>
+
+        <a href="../categories/software-engineering.html" class="badge badge-software-engineering" style="margin-bottom: 14px;">Software Engineering</a>
+        <h1 class="article-title-main">What Is an API? A Beginner-Friendly Guide for Developers</h1>
+        <p class="article-lead">
+          APIs are the invisible nervous system connecting every app on your phone, every website in your browser, and every modern AI service. Here is how they work under the hood.
+        </p>
+
+        <div class="article-byline">
+          <div class="byline-item">By <strong>SyntaxNest Editorial Team</strong></div>
+          <div class="byline-item">Published: <strong>October 2, 2026</strong></div>
+          <div class="byline-item">Updated: <strong>October 5, 2026</strong></div>
+          <div class="byline-item">Reading Time: <strong>6 min read</strong></div>
+        </div>
+      </header>
+
+      <!-- Article Layout -->
+      <div class="article-layout">
+        
+        <article class="article-content">
+          
+          <section id="introduction">
+            <h2>Introduction</h2>
+            <p>
+              When you check the weather on your smartphone, book a flight through an aggregator, or stream responses from an AI chatbot, your device does not calculate atmospheric pressure, maintain airline seating charts, or execute billion-parameter neural networks locally.
+            </p>
+            <p>
+              Instead, your device asks another computer over the internet to do that work and hand back the result. The contract that governs how these two software systems talk to each other is called an <strong>Application Programming Interface (API)</strong>.
+            </p>
+          </section>
+
+          <section id="what-api-stands-for">
+            <h2>What Does API Stand For?</h2>
+            <ul>
+              <li><strong>Application:</strong> Any software program with a distinct function (a web app, mobile app, microservice, or database).</li>
+              <li><strong>Programming:</strong> Built specifically for software code and developers, rather than a visual human interface with buttons and mice.</li>
+              <li><strong>Interface:</strong> A shared boundary across which two separate systems exchange information and commands according to strict rules.</li>
+            </ul>
+
+            <div class="callout callout-info">
+              <div class="callout-title">The Classic Restaurant Metaphor</div>
+              <p>
+                Think of an API as a waiter in a restaurant. You (the <strong>client</strong>) sit at a table looking at a menu. The kitchen (the <strong>server</strong>) prepares the food. You cannot walk into the kitchen and cook the steak yourself. Instead, you give your order to the waiter (the <strong>API</strong>), who delivers your order to the kitchen, waits for the meal, and delivers it safely back to your table.
+              </p>
+            </div>
+          </section>
+
+          <section id="client-server-model">
+            <h2>The Client-Server Request &amp; Response Lifecycle</h2>
+            <p>
+              Most web APIs follow the <strong>Client-Server architecture</strong> over the Hypertext Transfer Protocol (HTTP/HTTPS):
+            </p>
+
+            <div class="arch-diagram-card" aria-label="API HTTP Request-Response Lifecycle">
+              <div class="arch-header">
+                <span class="arch-title">HTTP Request-Response Lifecycle</span>
+                <div class="arch-dots" aria-hidden="true"><span class="arch-dot"></span><span class="arch-dot"></span><span class="arch-dot"></span></div>
+              </div>
+              <div class="arch-flow">
+                <div class="flow-step">
+                  <div class="flow-num">1</div>
+                  <div class="flow-content">
+                    <div class="flow-label">Client Prepares Request</div>
+                    <div class="flow-sub">Method (GET/POST), Endpoint URL, Headers, and optional Payload</div>
+                  </div>
+                </div>
+                <div class="flow-arrow">▼ (Sends across Internet)</div>
+                <div class="flow-step active">
+                  <div class="flow-num">2</div>
+                  <div class="flow-content">
+                    <div class="flow-label">Server Receives &amp; Validates</div>
+                    <div class="flow-sub">Authenticates API key, parses JSON, and queries internal database</div>
+                  </div>
+                </div>
+                <div class="flow-arrow">▼ (Sends across Internet)</div>
+                <div class="flow-step">
+                  <div class="flow-num">3</div>
+                  <div class="flow-content">
+                    <div class="flow-label">Server Dispatches HTTP Response</div>
+                    <div class="flow-sub">Status Code (e.g. 200 OK) + JSON Data Payload returned to Client</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="endpoints-and-urls">
+            <h2>Endpoints: The Digital Addresses</h2>
+            <p>
+              An <strong>endpoint</strong> is a specific URL where an API resource can be accessed. For example:
+            </p>
+            <div class="code-wrapper">
+              <div class="code-header">
+                <span>URL Anatomy</span>
+                <span>Breakdown</span>
+              </div>
+              <pre><code>https://api.syntaxnest.com/v1/articles?category=ai
+
+Base URL:  https://api.syntaxnest.com
+Path:      /v1/articles
+Query:     ?category=ai</code></pre>
+            </div>
+          </section>
+
+          <section id="http-methods">
+            <h2>HTTP Verbs: What Do You Want To Do?</h2>
+            <p>
+              RESTful APIs use standardized HTTP verbs to specify the intended action on a resource:
+            </p>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>HTTP Method</th>
+                    <th>Action</th>
+                    <th>Example Use Case</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>GET</strong></td>
+                    <td>Read / Retrieve data</td>
+                    <td>Fetch list of articles or user profile</td>
+                  </tr>
+                  <tr>
+                    <td><strong>POST</strong></td>
+                    <td>Create a new resource</td>
+                    <td>Submit a new comment or register a user</td>
+                  </tr>
+                  <tr>
+                    <td><strong>PUT</strong></td>
+                    <td>Replace an existing resource</td>
+                    <td>Overwrite an entire user profile document</td>
+                  </tr>
+                  <tr>
+                    <td><strong>PATCH</strong></td>
+                    <td>Partially update a resource</td>
+                    <td>Update only the email address field</td>
+                  </tr>
+                  <tr>
+                    <td><strong>DELETE</strong></td>
+                    <td>Remove a resource</td>
+                    <td>Delete an outdated article or cancel order</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="json-format">
+            <h2>JSON: The Universal Language of Web APIs</h2>
+            <p>
+              Almost all modern web APIs exchange data using <strong>JSON (JavaScript Object Notation)</strong>. It is human-readable, lightweight, and supported out-of-the-box by virtually every programming language (Python, JavaScript, Go, Java, C#).
+            </p>
+            <div class="code-wrapper">
+              <div class="code-header">
+                <span>Article Response</span>
+                <span>JSON</span>
+              </div>
+              <pre><code>{
+  "status": "success",
+  "data": {
+    "id": 101,
+    "title": "What Is RAG?",
+    "published": true,
+    "tags": ["AI", "RAG", "LLM"]
+  }
+}</code></pre>
+            </div>
+          </section>
+
+          <section id="http-status-codes">
+            <h2>HTTP Status Codes: How Did It Go?</h2>
+            <p>
+              Every API response begins with a 3-digit status code informing the client whether the operation succeeded or failed:
+            </p>
+            <ul>
+              <li><strong>2xx Success:</strong>
+                <ul>
+                  <li><code>200 OK</code>: The request succeeded and data is returned.</li>
+                  <li><code>201 Created</code>: A new record was successfully created.</li>
+                </ul>
+              </li>
+              <li><strong>4xx Client Errors:</strong>
+                <ul>
+                  <li><code>400 Bad Request</code>: Malformed syntax or missing required fields.</li>
+                  <li><code>401 Unauthorized</code>: Missing or invalid API key / authentication token.</li>
+                  <li><code>403 Forbidden</code>: Authenticated, but lacking permission to view this resource.</li>
+                  <li><code>404 Not Found</code>: The requested endpoint or record does not exist.</li>
+                </ul>
+              </li>
+              <li><strong>5xx Server Errors:</strong>
+                <ul>
+                  <li><code>500 Internal Server Error</code>: The server crashed or encountered an unexpected bug.</li>
+                  <li><code>503 Service Unavailable</code>: The server is overloaded or down for maintenance.</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+
+          <section id="authentication-and-api-keys">
+            <h2>Authentication: Protecting the API</h2>
+            <p>
+              Because serving API traffic costs computing power and money, public and private APIs require authentication:
+            </p>
+            <ul>
+              <li><strong>API Keys:</strong> A unique secret alphanumeric string passed in HTTP headers (e.g., <code>Authorization: Bearer sk_live_12345...</code>).</li>
+              <li><strong>Rate Limiting:</strong> Enforcing limits (e.g., maximum 60 requests per minute) to prevent server overload and denial-of-service abuse.</li>
+            </ul>
+          </section>
+
+          <section id="code-examples">
+            <h2>Real-World Code Examples: Calling an API</h2>
+            <p>
+              Here is how to fetch data from an API using modern JavaScript and Python:
+            </p>
+
+            <h3>JavaScript (Fetch API)</h3>
+            <div class="code-wrapper">
+              <div class="code-header">
+                <span>Fetch Example</span>
+                <span>JavaScript</span>
+              </div>
+              <pre><code>async function getArticleData(articleId) {
+  try {
+    const response = await fetch(`https://api.example.com/articles/${articleId}`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer YOUR_API_KEY'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP Error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log('Article Title:', data.title);
+  } catch (error) {
+    console.error('API call failed:', error.message);
+  }
+}</code></pre>
+            </div>
+
+            <h3>Python (Requests Library)</h3>
+            <div class="code-wrapper">
+              <div class="code-header">
+                <span>Requests Example</span>
+                <span>Python</span>
+              </div>
+              <pre><code>import requests
+
+def fetch_article(article_id):
+    url = f"https://api.example.com/articles/{article_id}"
+    headers = {
+        "Accept": "application/json",
+        "Authorization": "Bearer YOUR_API_KEY"
+    }
+
+    response = requests.get(url, headers=headers)
+
+    if response.status_code == 200:
+        data = response.json()
+        print("Article Title:", data.get("title"))
+    else:
+        print(f"Request failed with status code {response.status_code}")</code></pre>
+            </div>
+          </section>
+
+          <section id="conclusion">
+            <h2>Conclusion</h2>
+            <p>
+              APIs turn isolated software programs into interconnected global ecosystems. By understanding HTTP methods, status codes, and JSON formatting, you gain the foundational vocabulary required to connect frontends, write backends, and interface with powerful artificial intelligence models.
+            </p>
+          </section>
+
+          <!-- Article Bottom Navigation -->
+          <nav class="article-nav-section" aria-label="Article Pagination">
+            <a href="what-is-an-llm.html" class="article-nav-card">
+              <span class="nav-direction">← Previous Article</span>
+              <span class="nav-article-title">What Is an LLM? Large Language Models Explained</span>
+            </a>
+            <a href="python-for-ai-developers.html" class="article-nav-card next">
+              <span class="nav-direction">Next Article →</span>
+              <span class="nav-article-title">Python for AI Developers: The Primer</span>
+            </a>
+          </nav>
+
+          <!-- Related Articles -->
+          <section class="related-articles">
+            <h2 class="related-title">Related Articles</h2>
+            <div class="articles-grid">
+              <article class="article-card">
+                <div class="article-card-header">
+                  <span class="badge badge-python">Python</span>
+                  <span class="reading-time">9 min read</span>
+                </div>
+                <h3 class="article-card-title">
+                  <a href="python-for-ai-developers.html">Python for AI Developers: What You Need to Know First</a>
+                </h3>
+                <p class="article-card-desc">
+                  Learn how to write clean Python code to make HTTP requests and manipulate data structures.
+                </p>
+                <div class="article-card-footer">
+                  <span class="article-card-meta">October 2026</span>
+                  <a href="python-for-ai-developers.html" class="read-link">Read article →</a>
+                </div>
+              </article>
+
+              <article class="article-card">
+                <div class="article-card-header">
+                  <span class="badge badge-developer-tools">Developer Tools</span>
+                  <span class="reading-time">6 min read</span>
+                </div>
+                <h3 class="article-card-title">
+                  <a href="git-vs-github.html">Git vs GitHub: What's the Difference?</a>
+                </h3>
+                <p class="article-card-desc">
+                  Explore how version control safeguards the codebases you deploy and consume.
+                </p>
+                <div class="article-card-footer">
+                  <span class="article-card-meta">October 2026</span>
+                  <a href="git-vs-github.html" class="read-link">Read article →</a>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Article CTA Box -->
+          <div class="cta-banner" style="margin-top: 50px;">
+            <h2 class="cta-title">Build Resilient Systems</h2>
+            <p class="cta-desc">Continue learning software engineering architecture, REST standards, and API integrations.</p>
+            <a href="../articles.html" class="btn btn-primary">Browse All Articles</a>
+          </div>
+
+        </article>
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar" aria-label="Table of Contents">
+          <div class="toc-title">Table of Contents</div>
+          <ul class="toc-list">
+            <li><a href="#introduction" class="toc-link">Introduction</a></li>
+            <li><a href="#what-api-stands-for" class="toc-link">What Does API Stand For?</a></li>
+            <li><a href="#client-server-model" class="toc-link">Client-Server Model</a></li>
+            <li><a href="#endpoints-and-urls" class="toc-link">Endpoints &amp; URLs</a></li>
+            <li><a href="#http-methods" class="toc-link">HTTP Methods</a></li>
+            <li><a href="#json-format" class="toc-link">JSON Format</a></li>
+            <li><a href="#http-status-codes" class="toc-link">Status Codes</a></li>
+            <li><a href="#authentication-and-api-keys" class="toc-link">Authentication &amp; Keys</a></li>
+            <li><a href="#code-examples" class="toc-link">Code Examples</a></li>
+            <li><a href="#conclusion" class="toc-link">Conclusion</a></li>
+          </ul>
+        </aside>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="brand-logo" aria-label="SyntaxNest Homepage">
+            <svg class="brand-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="64" height="64" rx="14" fill="#0284c7" />
+              <path d="M22 18L14 32L22 46" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M42 18L50 32L42 46" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="32" cy="32" r="5" fill="#ffffff" />
+              <path d="M37 22L27 42" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+            </svg>
+            <span>Syntax<span class="brand-accent">Nest</span></span>
+          </a>
+          <p>Learn AI. Build Software. Understand Technology. Educational technology guides and engineering tutorials for developers worldwide.</p>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-col-title">Explore</h3>
+          <ul class="footer-links">
+            <li><a href="../index.html" class="footer-link">Home</a></li>
+            <li><a href="../articles.html" class="footer-link">Articles</a></li>
+            <li><a href="../about.html" class="footer-link">About</a></li>
+            <li><a href="../contact.html" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-col-title">Topics</h3>
+          <ul class="footer-links">
+            <li><a href="../categories/ai.html" class="footer-link">AI</a></li>
+            <li><a href="../categories/python.html" class="footer-link">Python</a></li>
+            <li><a href="../categories/javascript.html" class="footer-link">JavaScript</a></li>
+            <li><a href="../categories/typescript.html" class="footer-link">TypeScript</a></li>
+            <li><a href="../categories/software-engineering.html" class="footer-link">Software Engineering</a></li>
+            <li><a href="../categories/developer-tools.html" class="footer-link">Developer Tools</a></li>
+            <li><a href="../categories/cloud-devops.html" class="footer-link">Cloud &amp; DevOps</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-col-title">Legal</h3>
+          <ul class="footer-links">
+            <li><a href="../privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+            <li><a href="../disclaimer.html" class="footer-link">Disclaimer</a></li>
+            <li><a href="../sitemap.xml" class="footer-link">Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year">2026</span> SyntaxNest. All rights reserved.</p>
+        <p>A static educational technology resource hosted on GitHub Pages.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
